@@ -41,19 +41,19 @@ difvertical=sensor3-sensor2;
 
 Serial.println ("sensor1");
 Serial.println (sensor1);
-delay(500);
+delay(700);
 Serial.println ("sensor2");
 Serial.println (sensor2);
-delay(500);
+delay(700);
 Serial.println ("sensor3");
 Serial.println (sensor3);
-delay(500);
+delay(700);
 Serial.println ("difhorizontal");
 Serial.println (difhorizontal);
-delay(500);
+delay(700);
 Serial.println ("difvertical");
 Serial.println (difvertical);
-delay(500);
+delay(700);
 }
 while
 (difhorizontal <10);
