@@ -1,0 +1,99 @@
+#include <Servo.h>;
+Servo mhorizontal;
+Servo mvertical;
+
+int sensor1=0;
+int sensor2=1;
+int sensor3=2;
+int difhorizontal;
+int difvertical;
+int i;
+
+
+
+void setup() {
+  // put your setup code here, to run once:
+
+Serial.begin (9600);
+mhorizontal.attach(9);
+mvertical.attach(6);
+//posición inicial del motor horizontal.nmotor parado
+mhorizontal.write (95);
+//posición inicial del motor vertical
+mvertical.write (30);
+delay(2000);
+i=0;
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+i=i+5;
+
+//control del motor horizontal
+
+do
+{sensor1= analogRead (0);
+sensor2= analogRead (1);
+sensor3= analogRead (2);
+difhorizontal=sensor2-sensor1;
+difvertical=sensor3-sensor2;
+
+Serial.println ("sensor1");
+Serial.println (sensor1);
+delay(500);
+Serial.println ("sensor2");
+Serial.println (sensor2);
+delay(500);
+Serial.println ("sensor3");
+Serial.println (sensor3);
+delay(500);
+Serial.println ("difhorizontal");
+Serial.println (difhorizontal);
+delay(500);
+Serial.println ("difvertical");
+Serial.println (difvertical);
+delay(500);
+}
+while
+(difhorizontal <10);
+mhorizontal.write (100);
+delay (200);
+mhorizontal.write (95);
+delay (5000);
+
+
+//control del motor vertical
+
+do
+{sensor1= analogRead (0);
+sensor2= analogRead (1);
+sensor3= analogRead (2);
+difhorizontal=sensor2-sensor1;
+difvertical=sensor3-sensor2;
+
+Serial.println ("sensor1");
+Serial.println (sensor1);
+delay(500);
+Serial.println ("sensor2");
+Serial.println (sensor2);
+delay(500);
+Serial.println ("sensor3");
+Serial.println (sensor3);
+delay(500);
+Serial.println ("difhorizontal");
+Serial.println (difhorizontal);
+delay(500);
+Serial.println ("difvertical");
+Serial.println (difvertical);
+delay(500);
+}
+while
+(difvertical <10   &&  difhorizontal <10);
+
+mvertical.write (30+i);
+delay (500);
+
+
+
+}
